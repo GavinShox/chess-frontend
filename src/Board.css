@@ -1,0 +1,26 @@
+.board {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(8, 100px);  
+    grid-template-rows: repeat(8, 100px);  
+    width: 800px;
+    height: 800px;
+}
+
+.board .tile {
+    width: 100px;
+    height: 100px;
+}
+
+.board .tile-light {
+    color: black;
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+}
+
+.board .tile-dark {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}
