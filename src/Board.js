@@ -1,25 +1,31 @@
 import './Board.css'
 import React from 'react';
 
-class Tile {
-
-}
-
 function checkerBoard(idx) {
     let rank = (Math.floor(idx / 8));
-    if ((rank % 2) == 0) {
-        return ((idx % 2) == 0) ? true : false;
+    let is_idx_even = (idx % 2) === 0;
+    if ((rank % 2) === 0) {
+        return is_idx_even ? true : false;
     } else {
-        return ((idx % 2) == 0) ? false: true;
+        return is_idx_even ? false : true;
     }
-    
 }
 
 const Board = ({board}) => {
-    return ( 
+    let board_squares = Array.from(Array(64).keys());
+    const pieceOrEmpty = (board_tile) => {
+        if (board_tile !== null) {
+            return <img className='piece' src={board_tile}></img>
+        } else {
+            return <div></div>
+        }
+    }
+    return (
         <div className='board'>
-            {board.map((tile) => (
-                (checkerBoard(tile.idx)) ? <div className="tile-light" key={tile.idx}>{tile.file} {tile.rank}</div> : <div className="tile-dark" key={tile.idx}>{tile.file} {tile.rank}</div>
+            {board_squares.map((tile) => (
+                checkerBoard(tile) ?
+                    <div className="tile-light" key={tile}>{pieceOrEmpty(board[tile])}</div> :
+                    <div className="tile-dark" key={tile}>{pieceOrEmpty(board[tile])}</div>
             ))}
         </div>
         // <table className="board">
@@ -125,5 +131,5 @@ const Board = ({board}) => {
         // </table>
     );
 }
- 
+
 export default Board;
