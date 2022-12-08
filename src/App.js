@@ -16,11 +16,18 @@ import BlackQueen from './assets/pieces/Chess_qdt60.png'
 import WhiteKing from './assets/pieces/Chess_klt60.png'
 import BlackKing from './assets/pieces/Chess_kdt60.png'
 
+class Piece {
+  piecetype;
+  piececolour;
+  pieceimg;
+
+}
+
 function App() {
-  const files = ["a", "b", "c", "d", "e", "f", "g", "h"];
-  const ranks = [1, 2, 3, 4, 5, 6, 7, 8];
+  // const files = ["a", "b", "c", "d", "e", "f", "g", "h"];
+  // const ranks = [1, 2, 3, 4, 5, 6, 7, 8];
   let new_board = [];
-  let tile_idx = 0;
+//  let tile_idx = 0;
   // for (let i = ranks.length - 1; i >= 0; i--) {
   //   for (let j = 0; j < files.length; j++) {
   //     //new_board.push(ranks[i] + files[j])
@@ -55,10 +62,34 @@ function App() {
   new_board.push({piecetype: 4, piececolour: 0, pieceimg: WhiteRook});
 
   const [board, setBoard] = React.useState(new_board);
+  const [move, setMove] = React.useState([null, null])
+
+  const handleClick = (e, k) => {
+    let newboard = board.slice();
+
+    let newmove = move.slice();
+    for (let i = 0; i < move.length; i++) {
+      if (newmove[i] === null) {
+        newmove[i] = k;
+        break;
+      }
+    }
+    setMove(newmove);
+    if (move[0] !== null && move[1] !== null) {
+      console.log("here");
+      newboard[move[1]] = newboard[move[0]];
+      newboard[move[0]] = {piecetype: 0, piececolour: 0, pieceimg: null};
+
+      setBoard(newboard);
+      setMove([null, null]);
+    }
+    console.log(move);
+    //console.log(board);
+}
   return (
     <div className="App">
       <header className="App-header">
-        <Board board={board} />
+        <Board board={board} handleClick={handleClick} />
       </header>
     </div>
   );
