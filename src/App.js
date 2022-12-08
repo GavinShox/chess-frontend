@@ -66,23 +66,27 @@ function App() {
 
   const handleClick = (e, k) => {
     let newboard = board.slice();
-
     let newmove = move.slice();
+
     for (let i = 0; i < move.length; i++) {
       if (newmove[i] === null) {
         newmove[i] = k;
+        console.log(k);
         break;
       }
     }
-    setMove(newmove);
-    if (move[0] !== null && move[1] !== null) {
+    if (newmove[0] !== null && newmove[1] !== null) {
       console.log("here");
-      newboard[move[1]] = newboard[move[0]];
-      newboard[move[0]] = {piecetype: 0, piececolour: 0, pieceimg: null};
+      newboard[newmove[1]] = newboard[newmove[0]];
+      newboard[newmove[0]] = {piecetype: 0, piececolour: 0, pieceimg: null};
 
       setBoard(newboard);
       setMove([null, null]);
+    } 
+    else {
+      setMove(newmove);
     }
+
     console.log(move);
     //console.log(board);
 }
