@@ -28,31 +28,31 @@ function App() {
   //     tile_idx++;
   //   }
   // }
-  new_board.push(BlackRook);
-  new_board.push(BlackKnight);
-  new_board.push(BlackBishop);
-  new_board.push(BlackQueen);
-  new_board.push(BlackKing);
-  new_board.push(BlackBishop);
-  new_board.push(BlackKnight);
-  new_board.push(BlackRook);
+  new_board.push({piecetype: 4, piececolour: 1, pieceimg: BlackRook});
+  new_board.push({piecetype: 2, piececolour: 1, pieceimg: BlackKnight});
+  new_board.push({piecetype: 3, piececolour: 1, pieceimg: BlackBishop});
+  new_board.push({piecetype: 5, piececolour: 1, pieceimg: BlackQueen});
+  new_board.push({piecetype: 6, piececolour: 1, pieceimg: BlackKing});
+  new_board.push({piecetype: 3, piececolour: 1, pieceimg: BlackBishop});
+  new_board.push({piecetype: 2, piececolour: 1, pieceimg: BlackKnight});
+  new_board.push({piecetype: 4, piececolour: 1, pieceimg: BlackRook});
   for (let i = 8; i < 16; i++) {
-    new_board.push(BlackPawn);
+    new_board.push({piecetype: 1, piececolour: 1, pieceimg: BlackPawn});
   }
   for (let i = 16; i < 48; i++) {
-    new_board.push(null);
+    new_board.push({piecetype: 0, piececolour: 0, pieceimg: null});
   }
   for (let i = 48; i < 56; i++) {
-    new_board.push(WhitePawn);
+    new_board.push({piecetype: 1, piececolour: 0, pieceimg: WhitePawn});
   }
-  new_board.push(WhiteRook);
-  new_board.push(WhiteKnight);
-  new_board.push(WhiteBishop);
-  new_board.push(WhiteQueen);
-  new_board.push(WhiteKing);
-  new_board.push(WhiteBishop);
-  new_board.push(WhiteKnight);
-  new_board.push(WhiteRook);
+  new_board.push({piecetype: 4, piececolour: 0, pieceimg: WhiteRook});
+  new_board.push({piecetype: 2, piececolour: 0, pieceimg: WhiteKnight});
+  new_board.push({piecetype: 3, piececolour: 0, pieceimg: WhiteBishop});
+  new_board.push({piecetype: 5, piececolour: 0, pieceimg: WhiteQueen});
+  new_board.push({piecetype: 6, piececolour: 0, pieceimg: WhiteKing});
+  new_board.push({piecetype: 3, piececolour: 0, pieceimg: WhiteBishop});
+  new_board.push({piecetype: 2, piececolour: 0, pieceimg: WhiteKnight});
+  new_board.push({piecetype: 4, piececolour: 0, pieceimg: WhiteRook});
 
   const [board, setBoard] = React.useState(new_board);
   return (
