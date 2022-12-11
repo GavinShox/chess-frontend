@@ -49,17 +49,17 @@ const startBoard = () => {
 }
 
 export class Piece {
-  piecetype;
-  piececolour;
+  pieceType;
+  pieceColour;
 
   constructor(piecetype, piececolour) {
-    this.piecetype = piecetype;
-    this.piececolour = piececolour;
+    this.pieceType = piecetype;
+    this.pieceColour = piececolour;
   }
 
   getImg() {
-    if (this.piececolour == 0) {
-      switch(this.piecetype){
+    if (this.pieceColour == 0) {
+      switch(this.pieceType){
         case 0: return null;
         case 1: return WhitePawn;
         case 2: return WhiteKnight;
@@ -70,7 +70,7 @@ export class Piece {
         default: return null;
       }
     } else {
-      switch(this.piecetype){
+      switch(this.pieceType){
         case 0: return null;
         case 1: return BlackPawn;
         case 2: return BlackKnight;
