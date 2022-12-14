@@ -16,11 +16,20 @@ function checkerBoard(idx) {
 }
 
 
-
 const Board = ({ setBoard, board, handleClick }) => {
+
+    const makeMove = ({from, to, capture}) => {
+        console.log({from, to, capture});
+        let new_board = board.slice();
+        new_board[capture] = new PieceObj(0, 0);
+        new_board[to] = new_board[from];
+        new_board[from] = new PieceObj(0, 0);
+
+        setBoard(new_board);
+    }
+
     let squares = Array.from(Array(64).keys());
     const [dragPiece, setDragPiece] = useState(null);
-    const [dropPiece, setDropPiece] = useState(null);
 
     const onDragStart = (e, piece) => {
         //e.preventDefault();
@@ -37,15 +46,11 @@ const Board = ({ setBoard, board, handleClick }) => {
     const onDrop = (e, piece) => {
         // e.stopPropagation();
         console.log(e.currentTarget);
-        console.log(piece);
+        console.log(piece, "drop");
         e.preventDefault();
-        let new_board = board.slice();
-        //console.log("drag piece: ", dragPiece, "drop piece: ", dropPiece);
-        new_board[piece] = new_board[dragPiece];
-        new_board[dragPiece] = new PieceObj(0, 0);
-        setBoard(new_board);
+        makeMove({from: dragPiece, to: piece, capture: piece});
+
         setDragPiece(null);
-        setDropPiece(null);
     }
 
     const onDragOver = (e, piece) => {
