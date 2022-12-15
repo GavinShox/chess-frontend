@@ -92,7 +92,7 @@ function App() {
  
 
   const [board, setBoard] = React.useState(null);
-  const [move, setMove] = React.useState([null, null])
+
 
   useEffect(() => {
     let start = startBoard();
@@ -100,37 +100,15 @@ function App() {
     console.log('stateused');
   }, []);
 
-  const handleClick = (e, k) => {
-    let newboard = board.slice();
-    let newmove = move.slice();
-
-    for (let i = 0; i < move.length; i++) {
-      if (newmove[i] === null) {
-        newmove[i] = k;
-        console.log(k);
-        break;
-      }
-    }
-    if (newmove[0] !== null && newmove[1] !== null) {
-      newboard[newmove[1]] = newboard[newmove[0]];
-      newboard[newmove[0]] = new Piece(0, 0);
-
-      setBoard(newboard);
-      setMove([null, null]);
-    } 
-    else {
-      setMove(newmove);
-    }
-
-    //console.log(move);
-    //console.log(board);
-}
 //console.log(board);
   return board ? (
     <div className="App">
-      <header className="App-header">
-        <Board key={0} setBoard={setBoard} board={board} handleClick={handleClick} />
-      </header>
+      <div className='Board'>
+        <Board key={0} setBoard={setBoard} board={board} />
+      </div>
+      <div className='Timer'> 
+        timer
+       </div>
     </div>
   ) : <p>Loading Board...</p>;
 }

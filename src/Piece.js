@@ -12,7 +12,7 @@ const Piece = ({piece, onDragEnter, onDragOver, onDragEnd, onDragStart}) => {
     } else {
         return ( 
             <div draggable onDragStart={onDragStart} onDragEnter={onDragEnter} onDragOver={onDragOver} onDrop={onDragEnd} className="piece">
-                <img className="pieceImg" src={piece.getImg()} alt='piece' ></img>
+                <img className="piece-img" src={piece.getImg()} alt='piece' ></img>
             </div> 
         );
     }
