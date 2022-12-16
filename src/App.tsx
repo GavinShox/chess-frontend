@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import Board from './Board';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, Dispatch, SetStateAction } from 'react';
 
 import WhitePawn from './assets/pieces/Chess_plt60.png'
 import BlackPawn from './assets/pieces/Chess_pdt60.png'
@@ -16,8 +15,10 @@ import BlackQueen from './assets/pieces/Chess_qdt60.png'
 import WhiteKing from './assets/pieces/Chess_klt60.png'
 import BlackKing from './assets/pieces/Chess_kdt60.png'
 
+export type Dispatcher<S> = Dispatch<SetStateAction<S>>;
+
 const startBoard = () => {
-    let new_board = [];
+    let new_board: Piece[] = [];
 
     new_board.push(new Piece(4, 1));
     new_board.push(new Piece(2, 1));
@@ -49,10 +50,10 @@ const startBoard = () => {
 }
 
 export class Piece {
-  pieceType;
-  pieceColour;
+  pieceType: number;
+  pieceColour: number;
 
-  constructor(piecetype, piececolour) {
+  constructor(piecetype: number, piececolour: number) {
     this.pieceType = piecetype;
     this.pieceColour = piececolour;
   }
@@ -91,17 +92,17 @@ function App() {
   // const ranks = [1, 2, 3, 4, 5, 6, 7, 8];
  
 
-  const [board, setBoard] = React.useState(null);
+  const [board, setBoard] = React.useState<Piece[]>([]);
 
 
   useEffect(() => {
-    let start = startBoard();
+    let start: Piece[] = startBoard();
     setBoard(start);
     console.log('stateused');
   }, []);
 
 //console.log(board);
-  return board ? (
+  return board.length > 0 ? (
     <div className="App">
       <div className='Board'>
         <Board key={0} setBoard={setBoard} board={board} />
