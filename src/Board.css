@@ -1,8 +1,8 @@
 .board {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(8, 100px);  
-    grid-template-rows: repeat(8, 100px);  
+    grid-template-columns: repeat(8, 100px);
+    grid-template-rows: repeat(8, 100px);
     width: 800px;
     height: 800px;
 }
@@ -30,12 +30,13 @@
     box-shadow: 0px 0px 5px 5px darkgray inset;
 }
 
-.board .tile-light:hover, .tile-dark:hover {
+.board .tile-light:hover,
+.tile-dark:hover {
     box-shadow: 0px 0px 5px 5px darkgray inset;
 }
 
 .board .piece {
     width: 100%;
     height: 100%;
-    
+
 }

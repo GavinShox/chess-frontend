@@ -1,5 +1,6 @@
 import './App.css';
 import Board from './Board';
+import Clock from './Clock';
 import React, { useEffect, useState, Dispatch, SetStateAction } from 'react';
 
 import WhitePawn from './assets/pieces/Chess_plt60.png'
@@ -15,40 +16,45 @@ import BlackQueen from './assets/pieces/Chess_qdt60.png'
 import WhiteKing from './assets/pieces/Chess_klt60.png'
 import BlackKing from './assets/pieces/Chess_kdt60.png'
 
+import ClockImg from './assets/pocket-watch.png';
+
+
 export type Dispatcher<S> = Dispatch<SetStateAction<S>>;
 
-const startBoard = () => {
-    let new_board: Piece[] = [];
 
-    new_board.push(new Piece(4, 1));
-    new_board.push(new Piece(2, 1));
-    new_board.push(new Piece(3, 1));
-    new_board.push(new Piece(5, 1));
-    new_board.push(new Piece(6, 1));
-    new_board.push(new Piece(3, 1));
-    new_board.push(new Piece(2, 1));
-    new_board.push(new Piece(4, 1));
-    for (let i = 8; i < 16; i++) {
-      new_board.push(new Piece(1, 1));
-    }
-    for (let i = 16; i < 48; i++) {
-      new_board.push(new Piece(0, 0));
-    }
-    for (let i = 48; i < 56; i++) {
-      new_board.push(new Piece(1, 0));
-    }
-    new_board.push(new Piece(4, 0));
-    new_board.push(new Piece(2, 0));
-    new_board.push(new Piece(3, 0));
-    new_board.push(new Piece(5, 0));
-    new_board.push(new Piece(6, 0));
-    new_board.push(new Piece(3, 0));
-    new_board.push(new Piece(2, 0));
-    new_board.push(new Piece(4, 0));
-    console.log('here new board')
-    return new_board;
+
+const startBoard = () => {
+  let new_board: Piece[] = [];
+
+  new_board.push(new Piece(4, 1));
+  new_board.push(new Piece(2, 1));
+  new_board.push(new Piece(3, 1));
+  new_board.push(new Piece(5, 1));
+  new_board.push(new Piece(6, 1));
+  new_board.push(new Piece(3, 1));
+  new_board.push(new Piece(2, 1));
+  new_board.push(new Piece(4, 1));
+  for (let i = 8; i < 16; i++) {
+    new_board.push(new Piece(1, 1));
+  }
+  for (let i = 16; i < 48; i++) {
+    new_board.push(new Piece(0, 0));
+  }
+  for (let i = 48; i < 56; i++) {
+    new_board.push(new Piece(1, 0));
+  }
+  new_board.push(new Piece(4, 0));
+  new_board.push(new Piece(2, 0));
+  new_board.push(new Piece(3, 0));
+  new_board.push(new Piece(5, 0));
+  new_board.push(new Piece(6, 0));
+  new_board.push(new Piece(3, 0));
+  new_board.push(new Piece(2, 0));
+  new_board.push(new Piece(4, 0));
+  return new_board;
 }
 
+// TODO remove classes
 export class Piece {
   pieceType: number;
   pieceColour: number;
@@ -60,7 +66,7 @@ export class Piece {
 
   getImg() {
     if (this.pieceColour == 0) {
-      switch(this.pieceType){
+      switch (this.pieceType) {
         case 0: return null;
         case 1: return WhitePawn;
         case 2: return WhiteKnight;
@@ -71,7 +77,7 @@ export class Piece {
         default: return null;
       }
     } else {
-      switch(this.pieceType){
+      switch (this.pieceType) {
         case 0: return null;
         case 1: return BlackPawn;
         case 2: return BlackKnight;
@@ -90,7 +96,7 @@ function App() {
   //console.log('hereapp');
   // const files = ["a", "b", "c", "d", "e", "f", "g", "h"];
   // const ranks = [1, 2, 3, 4, 5, 6, 7, 8];
- 
+
 
   const [board, setBoard] = React.useState<Piece[]>([]);
 
@@ -100,16 +106,26 @@ function App() {
     setBoard(start);
     console.log('stateused');
   }, []);
-
-//console.log(board);
+  const [isStopped, setIsStopped] = React.useState<boolean>(false);
+  const [isPaused, setIsPaused] = React.useState<boolean>(false);
+  console.log(isStopped);
   return board.length > 0 ? (
     <div className="App">
       <div className='Board'>
+        <div className="Clock">
+          <img className='Clock' src={ClockImg} alt="clock" />
+          <Clock startTime={10} isPaused={isPaused} setIsStopped={setIsStopped}/>
+        </div>
         <Board key={0} setBoard={setBoard} board={board} />
+
+        <div className="Clock">
+          <img className='Clock' src={ClockImg} alt="clock" />
+          <Clock startTime={10} isPaused={isPaused} setIsStopped={setIsStopped}/>
+        </div>
+
+
+
       </div>
-      <div className='Timer'> 
-        timer
-       </div>
     </div>
   ) : <p>Loading Board...</p>;
 }

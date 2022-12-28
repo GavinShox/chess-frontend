@@ -1,3 +1,20 @@
 .clock {
-    
+    outline: 1px ridge whitesmoke;
+    width: 100px;
+    height: 50px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+.black-clock {
+    background-color: rgba(0, 0, 0, 0.301);
+}
+
+.white-clock {
+    background-color: rgba(255, 255, 255, 0.305);
+}
+.low-time {
+    outline-color: red;
+    color: red;
 }

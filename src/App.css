@@ -19,6 +19,10 @@
   margin-inline: 10%;
 }
 
-.App .Timer {
-  flex: 1;
+
+.App .Board .Clock {
+  display: flex;
+  flex-direction: row;
+  object-fit: contain;
+  padding-inline-end: 10px;
 }
