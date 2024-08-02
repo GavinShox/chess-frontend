@@ -3,18 +3,18 @@ import Board from './Board';
 import Clock from './Clock';
 import React, { useEffect, useState, Dispatch, SetStateAction } from 'react';
 
-import WhitePawn from './assets/pieces/Chess_plt60.png'
-import BlackPawn from './assets/pieces/Chess_pdt60.png'
-import WhiteKnight from './assets/pieces/Chess_nlt60.png'
-import BlackKnight from './assets/pieces/Chess_ndt60.png'
-import WhiteBishop from './assets/pieces/Chess_blt60.png'
-import BlackBishop from './assets/pieces/Chess_bdt60.png'
-import WhiteRook from './assets/pieces/Chess_rlt60.png'
-import BlackRook from './assets/pieces/Chess_rdt60.png'
-import WhiteQueen from './assets/pieces/Chess_qlt60.png'
-import BlackQueen from './assets/pieces/Chess_qdt60.png'
-import WhiteKing from './assets/pieces/Chess_klt60.png'
-import BlackKing from './assets/pieces/Chess_kdt60.png'
+import WhitePawn from './assets/pieces/plt45.svg'
+import BlackPawn from './assets/pieces/pdt45.svg'
+import WhiteKnight from './assets/pieces/nlt45.svg'
+import BlackKnight from './assets/pieces/ndt45.svg'
+import WhiteBishop from './assets/pieces/blt45.svg'
+import BlackBishop from './assets/pieces/bdt45.svg'
+import WhiteRook from './assets/pieces/rlt45.svg'
+import BlackRook from './assets/pieces/rdt45.svg'
+import WhiteQueen from './assets/pieces/qlt45.svg'
+import BlackQueen from './assets/pieces/qdt45.svg'
+import WhiteKing from './assets/pieces/klt45.svg'
+import BlackKing from './assets/pieces/kdt45.svg'
 
 import ClockImg from './assets/pocket-watch.png';
 
@@ -89,7 +89,7 @@ export class Piece {
       }
     }
   }
-}
+} 
 
 
 function App() {
@@ -107,21 +107,21 @@ function App() {
     console.log('stateused');
   }, []);
   const [isStopped, setIsStopped] = React.useState<boolean>(false);
-  const [isPaused, setIsPaused] = React.useState<boolean>(false);
+  const [isPaused, setIsPaused] = React.useState<boolean>(true);
   console.log(isStopped);
   return board.length > 0 ? (
     <div className="App">
       <div className='Board'>
-        <div className="Clock">
+        {/* <div className="Clock">
           <img className='Clock' src={ClockImg} alt="clock" />
           <Clock startTime={10} isPaused={isPaused} setIsStopped={setIsStopped}/>
-        </div>
+        </div> */}
         <Board key={0} setBoard={setBoard} board={board} />
 
-        <div className="Clock">
-          <img className='Clock' src={ClockImg} alt="clock" />
+        {/* <div className="Clock">
+          <img className='Clock' src={ClockImg} alt="clock" />  
           <Clock startTime={10} isPaused={isPaused} setIsStopped={setIsStopped}/>
-        </div>
+        </div> */}
 
 
 
